@@ -32,15 +32,16 @@ in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
 
+# statistika
 
-vyber_textu = len(TEXTS[0])
-print(vyber_textu)
+
+# oddělovač
 znak = "-" *40
+hvezda = "*"
 
 # přihlášení
-username = str(input("username:"))
-password = str(input("password:"))
-uzivatele = {"bob": "123"}
+username = input("username:")
+password = input("password:")
 print(znak)
 
 # registrováni uživatele
@@ -51,20 +52,23 @@ uzivatele = {
     "liz": "pass123"
 }
 
-# vyhodnoceni přístupu
+# přístupu uživatele a výběr textu uživatelem
 if uzivatele.get(username) == password:
-    print("Welcom to the app, ", username, "\n", "We have 3 texts to be analyzed.", "\n", znak)
-    vyber_textu = input("Enter a number btw. 1 and 3 to select: ")
+    print("Welcom to the app,", username,"\n","We have 3 texts to be analyzed.","\n",znak)
+    vyber_textu = int(input("Enter a number btw. 1 and 3 to select: "))
     if vyber_textu == 1:
-        print("bbb")
+        vypis = TEXTS[0]
+        print(vypis)
     elif vyber_textu == 2:
-        print("kjh")
+        vypis = TEXTS[1]
+        print(vypis)
     elif vyber_textu == 3:
-        print("kjhg")
+        vypis = TEXTS[2]
+        print(vypis)
     else:
-        ("Zdal jste špatný výběr. Program končí")
+        ("You have made a wrong selection. The program ends.")
 else:
-    print("unregistered user, terminating the program..") 
-  
+    print("Unregistered user, terminating the program..") 
+
 
 
