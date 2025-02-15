@@ -35,24 +35,24 @@ garpike and stingray are also present.'''
 
 vyber_textu = len(TEXTS[0])
 print(vyber_textu)
-vyber_velky = TEXTS.title
-print(vyber_velky)
-kjhg
-vybe_2 = ()
 znak = "-" *40
 
 # přihlášení
-username = input("username:")
-password = input("password:")
+username = str(input("username:"))
+password = str(input("password:"))
+uzivatele = {"bob": "123"}
 print(znak)
 
 # registrováni uživatele
-uzivatele ={
-    "bob": 123
+uzivatele = {
+    "bob": "123",
+    "ann": "pass123",
+    "mike": "password123",
+    "liz": "pass123"
 }
 
 # vyhodnoceni přístupu
-if username.get() == uzivatele:
+if uzivatele.get(username) == password:
     print("Welcom to the app, ", username, "\n", "We have 3 texts to be analyzed.", "\n", znak)
     vyber_textu = input("Enter a number btw. 1 and 3 to select: ")
     if vyber_textu == 1:
