@@ -39,17 +39,13 @@ mala_pismena = "" #1
 cisla = "" #3
 celkem = TEXTS[0].split()
 print("KONTROLA: ", celkem)
-vypis = dict()
+vypis = 0
 
-for pismeno in celkem:
-    if pismeno.isupper():
-        vypis["velke"] = [len(pismeno)]
-    elif pismeno.isnumeric():
-        vypis["cislo"] = [len(pismeno)]
-    elif pismeno.isalpha():
-        vypis["pismeno"] = [len(pismeno)]
+for slovo in celkem:
+    if slovo.isnumeric():
+        vypis += 1
+
     
-        
 print(vypis)
 
 # oddělovač
@@ -74,13 +70,10 @@ if uzivatele.get(username) == password:
     print("Welcom to the app,", username,"\n","We have 3 texts to be analyzed.","\n",znak)
     vyber_textu = int(input("Enter a number btw. 1 and 3 to select: "))
     if vyber_textu == 1:
-        vypis = TEXTS[0]
         print(vypis)
     elif vyber_textu == 2:
-        vypis = TEXTS[1]
         print(vypis)
     elif vyber_textu == 3:
-        vypis = TEXTS[2]
         print(vypis)
     else:
         ("You have made a wrong selection. The program ends.")
