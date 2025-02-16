@@ -32,8 +32,25 @@ in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
 
-# statistika
+# statistika text 1
+velka_pismena = "" #54
+zacinaji_velkym_pismem = "" #12
+mala_pismena = "" #1
+cisla = "" #3
+celkem = TEXTS[0].split()
+print("KONTROLA: ", celkem)
+vypis = dict()
 
+for pismeno in celkem:
+    if pismeno.isupper():
+        vypis["velke"] = [len(pismeno)]
+    elif pismeno.isnumeric():
+        vypis["cislo"] = [len(pismeno)]
+    elif pismeno.isalpha():
+        vypis["pismeno"] = [len(pismeno)]
+    
+        
+print(vypis)
 
 # oddělovač
 znak = "-" *40
