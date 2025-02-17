@@ -33,20 +33,23 @@ garpike and stingray are also present.'''
 ]
 
 # statistika text 1
-velka_pismena = "" #54
-zacinaji_velkym_pismem = "" #12
-mala_pismena = "" #1
-cisla = "" #3
-celkem = TEXTS[0].split()
-print("KONTROLA: ", celkem)
+velka_pismena = 0 #54
+zacinaji_velkym_pismem = 0 #12
+mala_pismena = 0 #1
+cisla = 0 #3
 vypis = 0
+celkem = TEXTS[vypis].split()
+
 
 for slovo in celkem:
     if slovo.isnumeric():
-        vypis += 1
-
-    
-print(vypis)
+        cisla += 1
+    elif slovo.upper():
+        velka_pismena += 1
+    elif slovo.lower():
+        mala_pismena += 1
+   
+#print("KONTROLA:\n","vypis:",vypis,"\n","cisla:", cisla,"\n","v. pismena:", velka_pismena,"\n","celkem:", len(celkem),"\n","m. pismena:", mala_pismena,"\n")
 
 # oddělovač
 znak = "-" *40
@@ -70,15 +73,16 @@ if uzivatele.get(username) == password:
     print("Welcom to the app,", username,"\n","We have 3 texts to be analyzed.","\n",znak)
     vyber_textu = int(input("Enter a number btw. 1 and 3 to select: "))
     if vyber_textu == 1:
-        print(vypis)
+        vypis += 0
     elif vyber_textu == 2:
-        print(vypis)
+        vypis += 1
     elif vyber_textu == 3:
-        print(vypis)
+        vypis += 2
     else:
         ("You have made a wrong selection. The program ends.")
 else:
     print("Unregistered user, terminating the program..") 
 
+print("KONTROLA:\n","vypis:",vypis,"\n","cisla:", cisla,"\n","v. pismena:", velka_pismena,"\n","celkem:", len(celkem),"\n","m. pismena:", mala_pismena,"\n")
 
 
