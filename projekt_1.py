@@ -32,28 +32,18 @@ in modern oceans. Other fish such as paddlefish,
 garpike and stingray are also present.'''
 ]
 
-# statistika text 1
-velka_pismena = 0 #54
-zacinaji_velkym_pismem = 0 #12
-mala_pismena = 0 #1
-cisla = 0 #3
-vypis = 0
-celkem = TEXTS[vypis].split()
-
-
-for slovo in celkem:
-    if slovo.isnumeric():
-        cisla += 1
-    elif slovo.upper():
-        velka_pismena += 1
-    elif slovo.lower():
-        mala_pismena += 1
-   
-#print("KONTROLA:\n","vypis:",vypis,"\n","cisla:", cisla,"\n","v. pismena:", velka_pismena,"\n","celkem:", len(celkem),"\n","m. pismena:", mala_pismena,"\n")
+# pomocný list
+velka_pismena = dict()
+zacinaji_velkym_pismem = dict()
+mala_pismena = dict()
+cisla = dict() 
+slova = dict()
+text = dict()
 
 # oddělovač
 znak = "-" *40
 hvezda = "*"
+
 
 # přihlášení
 username = input("username:")
@@ -73,16 +63,33 @@ if uzivatele.get(username) == password:
     print("Welcom to the app,", username,"\n","We have 3 texts to be analyzed.","\n",znak)
     vyber_textu = int(input("Enter a number btw. 1 and 3 to select: "))
     if vyber_textu == 1:
-        vypis += 0
+        text = TEXTS[0].split()
+        print(znak)
     elif vyber_textu == 2:
-        vypis += 1
+        text = TEXTS[1].split()
+        print(znak)
     elif vyber_textu == 3:
-        vypis += 2
+        text = TEXTS[2].split()
+        print(znak)
     else:
         ("You have made a wrong selection. The program ends.")
 else:
     print("Unregistered user, terminating the program..") 
 
-print("KONTROLA:\n","vypis:",vypis,"\n","cisla:", cisla,"\n","v. pismena:", velka_pismena,"\n","celkem:", len(celkem),"\n","m. pismena:", mala_pismena,"\n")
+#rozdělení textu podle zadání
+for slovo in text:
+    if slovo.isdigit():
+        cisla[slovo] = len(slovo)
+    elif slovo.isupper():
+        velka_pismena[slovo] = len(slovo)
+    elif slovo.islower():
+        mala_pismena[slovo] = len(slovo)
+    elif slovo.isalpha():
+        zacinaji_velkym_pismem[slovo] = len(slovo)
 
-
+# zkouška
+print("Vypis: ",len(slovo))
+print("Cisla\n",cisla)
+print("Velka pismena\n",velka_pismena)
+print("Mala pismena\n",mala_pismena)
+print("Zacina velkym pismen\n",zacinaji_velkym_pismem)
