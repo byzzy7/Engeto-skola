@@ -33,17 +33,16 @@ garpike and stingray are also present.'''
 ]
 
 # pomocný list
-velka_pismena = dict()
-zacinaji_velkym_pismem = dict()
-mala_pismena = dict()
-cisla = dict() 
-slova = dict()
-text = dict()
+velka_pismena = set()
+zacinaji_velkym_pismem = set()
+mala_pismena = set()
+cisla = set()
+pocet_slov = set()
+text = set()
 
 # oddělovač
 znak = "-" *40
 hvezda = "*"
-
 
 # přihlášení
 username = input("username:")
@@ -79,17 +78,34 @@ else:
 #rozdělení textu podle zadání
 for slovo in text:
     if slovo.isdigit():
-        cisla[slovo] = len(slovo)
+        cisla.add(slovo)
     elif slovo.isupper():
-        velka_pismena[slovo] = len(slovo)
+        velka_pismena.add(slovo)
     elif slovo.islower():
-        mala_pismena[slovo] = len(slovo)
+        mala_pismena.add(slovo)
     elif slovo.isalpha():
-        zacinaji_velkym_pismem[slovo] = len(slovo)
+        zacinaji_velkym_pismem.add(slovo)
 
-# zkouška
-print("Vypis: ",len(slovo))
-print("Cisla\n",cisla)
-print("Velka pismena\n",velka_pismena)
-print("Mala pismena\n",mala_pismena)
-print("Zacina velkym pismen\n",zacinaji_velkym_pismem)
+# vysledek
+print(f'''There are {len(text)} words in the selectd text.
+There are {len(zacinaji_velkym_pismem)} title words.
+Tehere are {len(velka_pismena)} uppercase words.
+There are {len(mala_pismena)} lowercase words.
+Tehere are {len(cisla)} numeric strings.
+The sum of all the numbers SOUČET\n''', znak
+)
+
+#počet písmenek
+print(f'''LEN|  OCCURENCES  |NR.\n {znak}
+  1|hvezda        |cislo
+  2|              |cislo
+  3|              |cislo
+  4|              |cislo
+  5|              |cislo
+  6|              |cislo
+  7|              |cislo
+  8|              |cislo
+  9|              |cislo
+ 10|              |cislo
+ 11|              |cislo'''
+)
