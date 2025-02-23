@@ -37,7 +37,6 @@ velka_pismena = 0
 zacinaji_velkym_pismem = 0
 mala_pismena = 0
 cisla = 0
-pocet_slov = 0
 text = set()
 pocet_pis = dict()
 
@@ -93,9 +92,42 @@ for cislo in TEXTS[0].split():
         sum += int(cislo)
 
 # počet pismen ve slově
+jedna = 0
+dve = 0
+tri = 0
+ctyri = 0
+pet = 0
+sest = 0
+sedm = 0
+osm = 0
+devet = 0 
+deset = 0
+jedenact = 0
+
 for slovo in text:
-    if slovo[0].isalpha():
-        pocet_pis[slovo] = [len(slovo) * "*"]
+    if slovo.isalpha():
+        if len(slovo) == 11:
+           jedenact += 1
+        elif len(slovo) == 10:
+           deset += 1
+        elif len(slovo) == 9:
+            devet += 1
+        elif len(slovo) == 8:
+            osm += 1
+        elif len(slovo) == 7:
+            sedm += 1
+        elif len(slovo) == 6:
+            sest += 1
+        elif len(slovo) == 5:
+           pet += 1
+        elif len(slovo) == 4:
+            ctyri += 1
+        elif len(slovo) == 3:
+            tri += 1
+        elif len(slovo) == 2:
+            dve += 1
+        elif len(slovo) == 1:
+            jedna += 1
 
 # vysledek
 print(f'''There are {len(text)} words in the selected text.
@@ -108,15 +140,15 @@ The sum of all the numbers {sum}\n''', znak
 
 #počet písmenek
 print(f'''LEN|  OCCURENCES  |NR.\n {znak}
-  1|hvezda        |cislo
-  2|              |cislo
-  3|              |cislo
-  4|              |cislo
-  5|              |cislo
-  6|              |cislo
-  7|              |cislo
-  8|              |cislo
-  9|              |cislo
- 10|              |cislo
- 11|              |cislo'''
+  1|{jedna * "*"} |{jedna}
+  2|{dve * "*"} |{dve}
+  3|{tri * "*"} |{tri}
+  4|{ctyri * "*"} |{ctyri}
+  5|{pet * "*"} |{pet}
+  6|{sest * "*"} |{sest}
+  7|{sedm * "*"} |{sedm}
+  8|{osm * "*"} |{osm}
+  9|{devet * "*"} |{devet}
+ 10|{deset * "*"} |{deset}
+ 11|{jedenact * "*"} |{jedenact}'''
 )
