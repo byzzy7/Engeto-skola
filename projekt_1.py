@@ -39,7 +39,7 @@ mala_pismena = 0
 cisla = 0
 pocet_slov = 0
 text = set()
-pocet_pismenek = set()
+pocet_pis = dict()
 
 # oddělovač
 znak = "-" *40
@@ -72,28 +72,38 @@ if uzivatele.get(username) == password:
         print(znak)
     else:
         ("You have made a wrong selection. The program ends.")
-elif uzivatele.get(username) != password: 
+else: 
     print("Unregistered user, terminating the program..") 
 
-#rozdělení textu podle zadání
+# rozdělení textu podle zadání
 for slovo in text:
-    if slovo.isupper():
-        velka_pismena += 1
-    elif slovo[0].islower():
+    if slovo.islower():
         mala_pismena += 1
     elif slovo[0].isalpha():
         zacinaji_velkym_pismem += 1
-    if slovo.isdigit():
+    elif slovo.isnumeric():
         cisla += 1
+    elif slovo.isupper():
+        velka_pismena += 1
 
+# soucet cislic v textu
+sum = 0
+for cislo in TEXTS[0].split():
+    if cislo.isnumeric():
+        sum += int(cislo)
+
+# počet pismen ve slově
+for slovo in text:
+    if slovo[0].isalpha():
+        pocet_pis[slovo] = [len(slovo) * "*"]
 
 # vysledek
-print(f'''There are {len(text)} words in the selectd text.
-There are {zacinaji_velkym_pismem} title words.
-Tehere are {velka_pismena} uppercase words.
+print(f'''There are {len(text)} words in the selected text.
+There are {zacinaji_velkym_pismem} titlecase words.
+There are {velka_pismena} uppercase words.
 There are {mala_pismena} lowercase words.
-Tehere are {cisla} numeric strings.
-The sum of all the numbers SOUČET\n''', znak
+There are {cisla} numeric strings.
+The sum of all the numbers {sum}\n''', znak
 )
 
 #počet písmenek
