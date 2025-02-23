@@ -33,16 +33,16 @@ garpike and stingray are also present.'''
 ]
 
 # pomocný list
-velka_pismena = set()
-zacinaji_velkym_pismem = set()
-mala_pismena = set()
-cisla = set()
-pocet_slov = set()
+velka_pismena = 0
+zacinaji_velkym_pismem = 0
+mala_pismena = 0
+cisla = 0
+pocet_slov = 0
 text = set()
+pocet_pismenek = set()
 
 # oddělovač
 znak = "-" *40
-hvezda = "*"
 
 # přihlášení
 username = input("username:")
@@ -72,26 +72,27 @@ if uzivatele.get(username) == password:
         print(znak)
     else:
         ("You have made a wrong selection. The program ends.")
-else:
+elif uzivatele.get(username) != password: 
     print("Unregistered user, terminating the program..") 
 
 #rozdělení textu podle zadání
 for slovo in text:
+    if slovo.isupper():
+        velka_pismena += 1
+    elif slovo[0].islower():
+        mala_pismena += 1
+    elif slovo[0].isalpha():
+        zacinaji_velkym_pismem += 1
     if slovo.isdigit():
-        cisla.add(slovo)
-    elif slovo.isupper():
-        velka_pismena.add(slovo)
-    elif slovo.islower():
-        mala_pismena.add(slovo)
-    elif slovo.isalpha():
-        zacinaji_velkym_pismem.add(slovo)
+        cisla += 1
+
 
 # vysledek
 print(f'''There are {len(text)} words in the selectd text.
-There are {len(zacinaji_velkym_pismem)} title words.
-Tehere are {len(velka_pismena)} uppercase words.
-There are {len(mala_pismena)} lowercase words.
-Tehere are {len(cisla)} numeric strings.
+There are {zacinaji_velkym_pismem} title words.
+Tehere are {velka_pismena} uppercase words.
+There are {mala_pismena} lowercase words.
+Tehere are {cisla} numeric strings.
 The sum of all the numbers SOUČET\n''', znak
 )
 
