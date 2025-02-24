@@ -33,15 +33,11 @@ garpike and stingray are also present.'''
 ]
 
 # pomocný list
-velka_pismena = 0
-zacinaji_velkym_pismem = 0
-mala_pismena = 0
-cisla = 0
 text = set()
-pocet_pis = dict()
 
 # oddělovač
 znak = "-" *40
+hvezda = "*"
 
 # přihlášení
 username = input("username:")
@@ -75,6 +71,11 @@ else:
     print("Unregistered user, terminating the program..") 
 
 # rozdělení textu podle zadání
+velka_pismena = 0
+zacinaji_velkym_pismem = 0
+mala_pismena = 0
+cisla = 0
+
 for slovo in text:
     if slovo.islower():
         mala_pismena += 1
@@ -87,47 +88,26 @@ for slovo in text:
 
 # soucet cislic v textu
 sum = 0
-for cislo in TEXTS[0].split():
+for cislo in text:
     if cislo.isnumeric():
         sum += int(cislo)
 
 # počet pismen ve slově
-jedna = 0
-dve = 0
-tri = 0
-ctyri = 0
-pet = 0
-sest = 0
-sedm = 0
-osm = 0
-devet = 0 
-deset = 0
-jedenact = 0
+pocet_pismen = []
+for slovo in text: 
+    pocet_pismen.append(len((slovo.replace('.', '').replace(',', ''))))
 
-for slovo in text:
-    if slovo.isalpha():
-        if len(slovo) == 11:
-           jedenact += 1
-        elif len(slovo) == 10:
-           deset += 1
-        elif len(slovo) == 9:
-            devet += 1
-        elif len(slovo) == 8:
-            osm += 1
-        elif len(slovo) == 7:
-            sedm += 1
-        elif len(slovo) == 6:
-            sest += 1
-        elif len(slovo) == 5:
-           pet += 1
-        elif len(slovo) == 4:
-            ctyri += 1
-        elif len(slovo) == 3:
-            tri += 1
-        elif len(slovo) == 2:
-            dve += 1
-        elif len(slovo) == 1:
-            jedna += 1
+jedna = pocet_pismen.count(1)
+dve = pocet_pismen.count(2)
+tri = pocet_pismen.count(3)
+ctyri = pocet_pismen.count(4)
+pet = pocet_pismen.count(5)
+sest = pocet_pismen.count(6)
+sedm = pocet_pismen.count(7)
+osm = pocet_pismen.count(8)
+devet = pocet_pismen.count(9)
+deset = pocet_pismen.count(10)
+jedenact = pocet_pismen.count(11)
 
 # vysledek
 print(f'''There are {len(text)} words in the selected text.
@@ -138,17 +118,17 @@ There are {cisla} numeric strings.
 The sum of all the numbers {sum}\n''', znak
 )
 
-#počet písmenek
-print(f'''LEN|  OCCURENCES  |NR.\n {znak}
-  1|{jedna * "*"} |{jedna}
-  2|{dve * "*"} |{dve}
-  3|{tri * "*"} |{tri}
-  4|{ctyri * "*"} |{ctyri}
-  5|{pet * "*"} |{pet}
-  6|{sest * "*"} |{sest}
-  7|{sedm * "*"} |{sedm}
-  8|{osm * "*"} |{osm}
-  9|{devet * "*"} |{devet}
- 10|{deset * "*"} |{deset}
- 11|{jedenact * "*"} |{jedenact}'''
+# počet písmenek
+print(f'''LEN|\tOCCURENCES\t|NR.\n {znak}
+  1|{jedna * hvezda}{(20 - int(jedna)) * " "}|{jedna}
+  2|{dve * hvezda}{(20 - int(dve)) * " "}|{dve}
+  3|{tri * hvezda}{(20 - int(tri)) * " "}|{tri}
+  4|{ctyri * hvezda}{(20 - int(ctyri)) * " "}|{ctyri}
+  5|{pet * hvezda}{(20 - int(pet)) * " "}|{pet}
+  6|{sest * hvezda}{(20 - int(sest)) * " "}|{sest}
+  7|{sedm * hvezda}{(20 - int(sedm)) * " "}|{sedm}
+  8|{osm * hvezda}{(20 - int(osm)) * " "}|{osm}
+  9|{devet * hvezda}{(20 - int(devet)) * " "}|{devet}
+ 10|{deset * hvezda}{(20 - int(deset)) * " "}|{deset}
+ 11|{jedenact * hvezda}{(20 - int(jedenact)) * " "}|{jedenact}'''
 )
