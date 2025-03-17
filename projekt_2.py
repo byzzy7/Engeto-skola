@@ -1,13 +1,5 @@
-from time import strftime
+from time import strftime, time
 import random
-
-znak = "-" * 47  # oddělovací čárka
-
-#uvitání hráče a představení hry
-print(f'''Hi there!\n{znak} 
-I've generated a random 4 digit number for you.
-Let's play a bulls and cows game.\n{znak}'''
-)
 
 def time_now():
     '''aktualní čas'''
@@ -19,16 +11,19 @@ def random_number():
     '''
     return random.randint(1000, 9999)
 
-def evaluation(uzivatel, hadane, pokus):
+def set_of_numbers(cislo_od_uzivatele, cisla_od_PC):
     '''
-    Vyhodnoceni vstupu, jestli uzivatel
-    uhadl nějaké číslo
+    převední čísla do seznamu
+    od uzivatele a PC
+    vstup = 1234
+    výstup = 1,2,3,4
     '''
-    pokus += 1
-    if uzivatel == hadane:
-        return "čislo udohnute"
-    else:
-        return "nenene"
+    while cislo_od_uzivatele > 0:
+        cisla_uzivatel.append(cislo_od_uzivatele % 10)
+        cislo_od_uzivatele = cislo_od_uzivatele // 10
+    while cisla_od_PC > 0:
+         cisla_random.append(cisla_od_PC % 10)
+         cisla_od_PC = cisla_od_PC // 10
 
 def statistics(hadane_cislo, pocet_hadani, cas):
     '''
@@ -36,19 +31,55 @@ def statistics(hadane_cislo, pocet_hadani, cas):
     Počet hádaní, Hádané číslo, Čas
     '''
     return {
-        "Hadane_cislo": hadane_cislo,
-        "Počet_hadani": pocet_hadani,
+        "Hadane cislo": hadane_cislo,
+        "Počet hadani": pocet_hadani,
         "Čas": cas
     }
 
-#pocet pokusu
-guesses = 0
-#vylosované číslo pro hádnání
-evaluation.guessed_number = random_number()
+def memory():
+    pass
 
-#Vypis hadaneho cisla
-print("Tipované číslo:", evaluation.guessed_number)
-#vstup uživatele a vygenoravni nahodneho cisla
-print(evaluation(int(input("Zadej číslo: ")),evaluation.guessed_number, guesses))
+def user_choice(vstup, pc):
+    while True:
+        if vstup != pc:
+            return uzivatel_cislo
+
+def evaluation(rozdil):
+    if rozdil != None:
+        print(f"{rozdil} cows \n{znak}")
+    else:
+        print(f"0 cows\n{znak}")
+
+start = time() # začátek počítání času
+znak = "-" * 47  # oddělovací čárka
+cisla_uzivatel = [] # seznam čísel od uživatele
+cisla_random = [] # seznam čísel od PC nahodne
+guesses = 0 #pocet pokusu
+
+#uvitání hráče a představení hry
+print(f'''Hi there!\n{znak} 
+I've generated a random 4 digit number for you.
+Let's play a bulls and cows game.\n{znak}'''
+)
+
+#vylosované číslo pro hádnání
+PC_nahodne = random_number()
+uzivatel_cislo = int(input("Enter a number: "))
+print(f"{znak}\n>>> {uzivatel_cislo}")
+
+user_choice(uzivatel_cislo, PC_nahodne)
+
+#rozdělení čísla do seznamu od uživatele a nahodné
+set_of_numbers(uzivatel_cislo, PC_nahodne)
+rozdil_seznamu = [value for value in cisla_uzivatel if value in cisla_random] # vyhledani stejnych cisel uzivate vs PC
+evaluation(rozdil_seznamu)
+end = time() #začátek počítání času
+x = round(end - start,2) #výsledek jak dlouho hádal uživatel
+
+print("TEST Tipované číslo:", PC_nahodne)
+print("TEST vypisu", cisla_uzivatel)
+print("TEST vypisu", cisla_random)
+print("TEST vypis rozdilu", rozdil_seznamu)
+
 #vypis statistiky
-print("Statistika:",statistics(evaluation.guessed_number, guesses, time_now()))
+print(f"{znak}\nStatistika:",statistics(PC_nahodne, guesses, x))
