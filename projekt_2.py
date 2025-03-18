@@ -76,6 +76,7 @@ while pokracovat:
         pokracovat = False
         print(f"{znak}\n>>> {uzivatel_cislo}\nUhadl jsi!")
     else:
+        guesses += 1
         print("Znovu")
 
 
