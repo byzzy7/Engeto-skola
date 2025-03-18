@@ -1,9 +1,5 @@
-from time import strftime, time
+from time import time
 import random
-
-def time_now():
-    '''aktualní čas'''
-    return strftime("%X")
 
 def random_number():
     ''' vygenerování náhodného čtyřmístného čísla
@@ -36,24 +32,17 @@ def statistics(hadane_cislo, pocet_hadani, cas):
         "Čas": cas
     }
 
-def memory():
-    dd.append(uzivatel_cislo)
-
-def user_choice():
+def user_choice(uzivatel_cislo, pocet):
     pass
 
 def evaluation(rozdil):
-    if rozdil != None:
-        print(f"{rozdil} cows\n{znak}")
-    else:
-        print(f"0 cows\n{znak}")
+    pass
 
-start = time() # začátek počítání času
+start = time() # stopky - zacatek
 znak = "-" * 47  # oddělovací čárka
 cisla_uzivatel = [] # seznam čísel od uživatele
 cisla_random = [] # seznam čísel od PC nahodne
 guesses = 0 #pocet pokusu
-dd = [] # ulozeni vsech tipovanych cisel
 
 #uvitání hráče a představení hry
 print(f'''Hi there!\n{znak} 
@@ -63,30 +52,30 @@ Let's play a bulls and cows game.\n{znak}'''
 
 #vylosované číslo pro hádnání
 PC_nahodne = random_number()
-#uzivatel_cislo = int(input("Enter a number: "))
-
-print("TEST Tipované číslo:", PC_nahodne)
-
-pokracovat = True
-while pokracovat:
-    uzivatel_cislo = int(input("Enter a number: "))
-    memory()
-    set_of_numbers(uzivatel_cislo, PC_nahodne)
-    if uzivatel_cislo == PC_nahodne:
-        pokracovat = False
-        print(f"{znak}\n>>> {uzivatel_cislo}\nUhadl jsi!")
-    else:
-        guesses += 1
-        print("Znovu")
+print("TEST tipované číslo:", PC_nahodne)
 
 
 #rozdělení čísla do seznamu od uživatele a nahodné
-#set_of_numbers(uzivatel_cislo, PC_nahodne)
-rozdil_seznamu = [value for value in cisla_uzivatel if value in cisla_random] # vyhledani stejnych cisel uzivate vs PC
-evaluation(rozdil_seznamu)
-end = time() #začátek počítání času
-x = round(end - start,2) #výsledek jak dlouho hádal uživatel
 
+rozdil_seznamu = [value for value in cisla_uzivatel if value in cisla_random] # vyhledani stejnych cisel uzivate vs PC
+
+pokracovani = True
+while pokracovani:
+    try:
+        uzivatel = int(input("Enter a number: "))
+        set_of_numbers(uzivatel, PC_nahodne)
+        if uzivatel != PC_nahodne:
+            guesses += 1
+            print(f">>> {uzivatel}\n{rozdil_seznamu}\n{znak}")
+        else:
+            print(f"Correct, you've guessed the right number\nin {guesses} guesses!\n{znak}\nThat´s amazing!")
+            pokracovani = False
+    except ValueError:
+        print("Numbers only")
+
+#set_of_numbers(uzivatel, PC_nahodne)
+end = time() # stopky - konec
+x = round(end - start,2) #výsledek jak dlouho hádal uživatel
 
 print("TEST vypisu", cisla_uzivatel)
 print("TEST vypisu", cisla_random)
