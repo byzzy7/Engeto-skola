@@ -42,8 +42,8 @@ start = time() # stopky - zacatek
 znak = "-" * 47  # oddělovací čárka
 cisla_uzivatel = [] # seznam čísel od uživatele
 cisla_random = [] # seznam čísel od PC nahodne
-guesses = 0 #pocet pokusu
-uzivatel = ""
+guesses = 0 # pocet pokusu
+uzivatel = "" # cislo od uzivatele
 
 #uvitání hráče a představení hry
 print(f'''Hi there!\n{znak} 
