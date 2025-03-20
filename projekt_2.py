@@ -1,6 +1,5 @@
 from time import time
 import random
-from collections import Counter
 
 def random_number():
     ''' vygenerování náhodného čtyřmístného čísla
@@ -33,20 +32,18 @@ def statistics(hadane_cislo, pocet_hadani, cas):
         "Čas": cas
     }
 
-def user_choice(uzivatel, gg):
-    while gg != uzivatel:
-        uzivatel = int(input(">>> "))
-        print("ne","\n", znak)
-    print(f"Correct, you've guessed the right number\nin guesses!\n{znak}\nThat´s amazing!")
+def user_choice(aa):
+    pass
 
-def bull():
-        pass
+def bull(uz):
+    pass
 
 start = time() # stopky - zacatek
 znak = "-" * 47  # oddělovací čárka
 cisla_uzivatel = [] # seznam čísel od uživatele
 cisla_random = [] # seznam čísel od PC nahodne
 guesses = 0 #pocet pokusu
+uzivatel = ""
 
 #uvitání hráče a představení hry
 print(f'''Hi there!\n{znak} 
@@ -58,18 +55,20 @@ Let's play a bulls and cows game.\n{znak}\nEnter a number:\n{znak}'''
 PC_nahodne = random_number()
 print("TEST tipované číslo:", PC_nahodne)
 
-uzi = int(input(">>> "))
-print(znak)
-user_choice(uzi, PC_nahodne)
-#print(f"Correct, you've guessed the right number\nin {cc} guesses!\n{znak}\nThat´s amazing!")
+while PC_nahodne != uzivatel:
+    guesses += 1
+    uzivatel = int(input(">>> "))
+    print("ne", "\n")
+print(f"Correct, you've guessed the right number\nin {guesses} guesses!\n{znak}\nThat´s amazing!")
 
 #rozdělení čísla do seznamu od uživatele a nahodné
 rozdil_seznamu = [value for value in cisla_uzivatel if value in cisla_random] # vyhledani stejnych cisel uzivate vs PC
-set_of_numbers(cislo_od_uzivatele=uzi, cisla_od_PC=PC_nahodne)
+
+bull(uz=cisla_uzivatel)
+set_of_numbers(cislo_od_uzivatele=uzivatel, cisla_od_PC=PC_nahodne)
 end = time() # stopky - konec
 x = round(end - start,2) #výsledek jak dlouho hádal uživatel
 
-print("TEST uzivatel", uzi)
 print("TEST vypisu", cisla_uzivatel)
 print("TEST vypisu", cisla_random)
 print("TEST vypis rozdilu", rozdil_seznamu)
